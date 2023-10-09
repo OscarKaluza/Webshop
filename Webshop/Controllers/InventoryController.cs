@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Webshop.BLL;
 using Webshop.Models;
 
 namespace Webshop.Controllers
@@ -29,8 +30,9 @@ namespace Webshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddPhone(PhoneModel phoneModel)
         {
+            Phone phone = new Phone(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+            
             return View("ValidationView");
-
         }
 
         // GET: InventoryController/Edit/5

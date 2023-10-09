@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Webshop.BLL\Webshop.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

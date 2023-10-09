@@ -31,6 +31,7 @@ namespace Webshop.Controllers
         public ActionResult AddPhone(PhoneModel phoneModel)
         {
             Phone phone = new Phone(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+            phone.AddPhone();
             
             return View("ValidationView");
         }

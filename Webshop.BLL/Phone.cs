@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Webshop.DAL;
 
 namespace Webshop.BLL
 {
@@ -23,6 +24,13 @@ namespace Webshop.BLL
             this.Model = model;
             this.Description = description;
             this.Price = price;
+        }
+
+        public void AddPhone()
+        {
+            PhoneDAL phoneDAL = new PhoneDAL();
+
+            phoneDAL.AddPhone(ID, Brand, Model, Description, Price);
         }
 
 

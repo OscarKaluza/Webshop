@@ -30,7 +30,7 @@ namespace Webshop.BLL
         {
             PhoneDAL phoneDAL = new PhoneDAL();
 
-            phoneDAL.AddPhone(ID, Brand, Model, Description, Price);
+            phoneDAL.AddPhoneInDatabase(ID, Brand, Model, Description, Price);
         }
 
 

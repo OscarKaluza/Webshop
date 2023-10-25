@@ -16,9 +16,9 @@ namespace Webshop.DAL
         public string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
 
 
-        public void AddPhone(int id, string brand, string model, string description, int price)
+        public void AddPhoneInDatabase(int id, string brand, string model, string description, int price)
         {
-            string sqlQuery = "INSERT INTO `phone`(`ID`, `Brand`, `Model`, `Description`, `Price`) VALUES(id, brand, model, description, price)";
+            string sqlQuery = "INSERT INTO `phone`(ID, Brand, Model, Description, Price) VALUES(@id, @brand, @model, @description, @price)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -26,8 +26,13 @@ namespace Webshop.DAL
 
                 using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
                 {
-                    command.Parameters.AddWithValue("id", id);
-                    command.Parameters.AddWithValue("brand", brand);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@brand", brand);
+                    command.Parameters.AddWithValue("@model", model);
+                    command.Parameters.AddWithValue("@description", description);
+                    command.Parameters.AddWithValue("@price", price);
+
+                    command.ExecuteNonQuery();
                 }
             }
 

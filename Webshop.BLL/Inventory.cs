@@ -8,7 +8,7 @@ using Webshop.DAL;
 
 namespace Webshop.BLL
 {
-    public class Phone
+    public class Inventory
     {
         private static int LastAssignedId = 0;
         public int ID { get; set; }
@@ -17,7 +17,7 @@ namespace Webshop.BLL
         private string Description { get; set; }
         private int Price { get; set; }
 
-        public Phone(string brand, string model, string description, int price)
+        public Inventory(string brand, string model, string description, int price)
         {
             this.ID = ++LastAssignedId;
             this.Brand = brand;
@@ -28,7 +28,7 @@ namespace Webshop.BLL
 
         public void AddPhone()
         {
-            PhoneDAL phoneDAL = new PhoneDAL();
+            InventoryDAL phoneDAL = new InventoryDAL();
 
             phoneDAL.AddPhoneInDatabase(ID, Brand, Model, Description, Price);
         }

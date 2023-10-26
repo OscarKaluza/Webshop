@@ -28,9 +28,9 @@ namespace Webshop.Controllers
         // POST: InventoryController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPhone(PhoneModel phoneModel)
+        public ActionResult AddPhone(InventoryModel phoneModel)
         {
-            Phone phone = new Phone(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+            Inventory phone = new Inventory(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
             phone.AddPhone();
             
             return View("ValidationView");

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using Webshop.DAL;
+﻿using Webshop.DAL;
 
 namespace Webshop.BLL
 {
     public class Phone
     {
         public string Brand;
+        private string Model;
+        private string Description;
+        private int Price;
 
         public List<Phone> getPhones()
         {
@@ -20,11 +17,20 @@ namespace Webshop.BLL
 
             foreach (string phoneBrand in phoneBrands)
             {
-                Phone phone = new Phone { Brand = phoneBrand };
+                Phone phone = new Phone { Brand = phoneBrand};
                 phones.Add(phone);
             }
 
+
             return phones;
+        }
+
+        public List<String> getBrandList()
+        {
+            PhoneDAL phoneDAL = new PhoneDAL();
+            List<String> phoneBrands = phoneDAL.GetPhoneBrands();
+
+            return phoneBrands;
         }
 
     }

@@ -38,5 +38,31 @@ namespace Webshop.DAL
             return brands;
         }
 
+        public List<string> GetPhoneModels()
+        {
+            List<string> models = new List<string>();
+
+            string sqlQuery = "SELECT DISTINCT Model FROM phone;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string brand = reader["Model"].ToString();
+                            models.Add(brand);
+                        }
+                    }
+                }
+            }
+
+            return models;
+        }
+
     }
 }

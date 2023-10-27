@@ -13,7 +13,7 @@ namespace Webshop.DAL
 {
     public class InventoryDAL
     {
-        public string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
+        private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
 
 
         public void AddPhoneInDatabase(int id, string brand, string model, string description, int price)

@@ -33,5 +33,13 @@ namespace Webshop.BLL
             return phoneBrands;
         }
 
+        public List<String> getModelList()
+        {
+            PhoneDAL phoneDAL = new PhoneDAL();
+            List<String> phoneModels = phoneDAL.GetPhoneModels();
+
+            return phoneModels;
+        }
+
     }
 }

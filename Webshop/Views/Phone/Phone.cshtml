@@ -1,8 +1,14 @@
 ﻿@model Webshop.Models.PhoneModel;
 
-@foreach (var brand in Model.Brands)
-{
-    <ul>
-        <li>@brand</li>
-    </ul>
-}
+<label>All Phones</label>
+
+<ul>
+    @for (var i = 0; i < Model.Brands.Count; i++)
+    {
+        <li>
+            Brand: @Model.Brands[i]
+            <br />
+            Model: @Model.Models[i]
+        </li>
+    }
+</ul>

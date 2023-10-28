@@ -1,14 +1,55 @@
 ﻿@model Webshop.Models.PhoneModel;
 
-<label>All Phones</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Webshop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
 
-<ul>
-    @for (var i = 0; i < Model.Brands.Count; i++)
-    {
-        <li>
-            Brand: @Model.Brands[i]
-            <br />
-            Model: @Model.Models[i]
-        </li>
-    }
-</ul>
+        h1 {
+            margin: 0;
+        }
+
+        .brands {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+            .brands ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap; /* Allow brands to wrap onto the next line */
+                justify-content: 100; /* Add space between brands */
+            }
+
+            .brands li {
+                margin: 0;
+                width: 30%; /* Each brand takes up to 30% of the container width */
+                text-align: center; /* Center the brand name */
+            }
+    </style>
+</head>
+<body>
+    <div class="brands">
+        <h2>All Phones</h2>
+        <ul>
+            @for (var i = 0; i < Model.Brands.Count; i++)
+            {
+                <li>
+                    <h4>Brand: @Model.Brands[i]</h4>
+                    <p>Model: @Model.Models[i]</p>
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

@@ -41,14 +41,14 @@
     <div class="brands">
         <h2>All Phones</h2>
         <ul>
-            @for (var i = 0; i < Model.Brands.Count; i++)
+            @for (var i = 0; i < Model.phones.Count; i++)
             {
                 <li>
                     <img src="https://scalar.usc.edu/works/a-nostalgic-filter/media/thumbnail.png">
-                    <h4>Brand: @Model.Brands[i]</h4>
-                    <p>Model: @Model.Models[i]</p>
-                    <p> Price: @Model.Prices[i] </p>
-                    <p>Description: @Model.Descriptions[i]</p>
+                    <p>Brand: @Model.phones[i].Brand</p>
+                    <p>Model: @Model.phones[i].Model</p>
+                    <p> Price: @Model.phones[i].Price </p>
+                    <p>Description: @Model.phones[i].Description</p>
                 </li>
             }
         </ul>

@@ -8,7 +8,6 @@ namespace Webshop.BLL.Phone
         public string Model;
         public string Description;
         public int Price;
-
         
     }
 }

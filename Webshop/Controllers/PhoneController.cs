@@ -8,13 +8,12 @@ namespace Webshop.Controllers
     public class PhoneController : Controller
     {
         PhoneModel phoneModel = new PhoneModel();
-        public List<Phone> allPhoneList= new List<Phone>();
+        PhoneCollection phoneCollection = new PhoneCollection();
+        private List<Phone> allPhoneList= new List<Phone>();
 
         public IActionResult Phone()
         {
-            PhoneCollection phoneCollection = new PhoneCollection();
-
-            allPhoneList = phoneCollection.getPhones();
+            allPhoneList = phoneCollection.createPhoneList();
 
             for (int i = 0; i < allPhoneList.Count; i++)
             {

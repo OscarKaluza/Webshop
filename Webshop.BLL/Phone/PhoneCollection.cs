@@ -11,7 +11,7 @@ namespace Webshop.BLL.Phone
     {
         private List<Phone> phones = new List<Phone>();
 
-        public List<Phone> getPhones()
+        public List<Phone> createPhoneList()
         {
             PhoneDAL phoneDAL = new PhoneDAL();
             List<string> phoneBrands = phoneDAL.GetPhoneBrands();

@@ -13,6 +13,7 @@ namespace Webshop.BLL
         {
             PhoneDAL phoneDAL = new PhoneDAL();
             List<string> phoneBrands = phoneDAL.GetPhoneBrands();
+            List<string> phoneModels = phoneDAL.GetPhoneBrands();
             List<Phone> phones = new List<Phone>();
 
             foreach (string phoneBrand in phoneBrands)
@@ -20,7 +21,6 @@ namespace Webshop.BLL
                 Phone phone = new Phone { Brand = phoneBrand};
                 phones.Add(phone);
             }
-
 
             return phones;
         }
@@ -39,6 +39,22 @@ namespace Webshop.BLL
             List<String> phoneModels = phoneDAL.GetPhoneModels();
 
             return phoneModels;
+        }
+
+        public List<int> getPhonePrices()
+        {
+            PhoneDAL phoneDAL = new PhoneDAL();
+            List<int> phonePrice = phoneDAL.GetPhonePrices();
+
+            return phonePrice;
+        }
+
+        public List<String> getDescriptionList()
+        {
+            PhoneDAL phoneDAL = new PhoneDAL();
+            List<String> phoneDescriptions = phoneDAL.getPhoneDescription();
+
+            return phoneDescriptions;
         }
 
     }

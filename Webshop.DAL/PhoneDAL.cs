@@ -16,7 +16,7 @@ namespace Webshop.DAL
         {
             List<string> brands = new List<string>();
 
-            string sqlQuery = "SELECT DISTINCT Brand FROM phone;";
+            string sqlQuery = "SELECT Brand FROM phone;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -42,7 +42,7 @@ namespace Webshop.DAL
         {
             List<string> models = new List<string>();
 
-            string sqlQuery = "SELECT DISTINCT Model FROM phone;";
+            string sqlQuery = "SELECT Model FROM phone;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -54,8 +54,8 @@ namespace Webshop.DAL
                     {
                         while (reader.Read())
                         {
-                            string brand = reader["Model"].ToString();
-                            models.Add(brand);
+                            string model = reader["Model"].ToString();
+                            models.Add(model);
                         }
                     }
                 }
@@ -63,6 +63,59 @@ namespace Webshop.DAL
 
             return models;
         }
+
+        public List<int> GetPhonePrices()
+        {
+            List<int> prices = new List<int>();
+
+            string sqlQuery = "SELECT Price FROM phone;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int price = (int)reader["Price"];
+                            prices.Add(price);
+                        }
+                    }
+                }
+            }
+
+            return prices;
+        }
+
+        public List<string> getPhoneDescription()
+        {
+            List<string> description = new List<string>();
+
+            string sqlQuery = "SELECT description FROM phone;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string descriptions = reader["Description"].ToString();
+                            description.Add(descriptions);
+                        }
+                    }
+                }
+            }
+
+            return description;
+        }
+
 
     }
 }

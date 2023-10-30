@@ -27,15 +27,14 @@
                 list-style: none;
                 padding: 0;
                 display: flex;
-                flex-wrap: wrap; /* Allow brands to wrap onto the next line */
-                justify-content: 100; /* Add space between brands */
+                flex-wrap: wrap;
+                justify-content: 100;
             }
 
             .brands li {
                 margin: 0;
-                width: 30%; /* Each brand takes up to 30% of the container width */
-                text-align: center; /* Center the brand name */
-            }
+                width: 30%;
+                text-align: 100;
     </style>
 </head>
 <body>
@@ -45,8 +44,11 @@
             @for (var i = 0; i < Model.Brands.Count; i++)
             {
                 <li>
+                    <img src="https://scalar.usc.edu/works/a-nostalgic-filter/media/thumbnail.png">
                     <h4>Brand: @Model.Brands[i]</h4>
                     <p>Model: @Model.Models[i]</p>
+                    <p> Price: @Model.Prices[i] </p>
+                    <p>Description: @Model.Descriptions[i]</p>
                 </li>
             }
         </ul>

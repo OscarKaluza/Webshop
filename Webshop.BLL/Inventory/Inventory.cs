@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Webshop.DAL;
 
-namespace Webshop.BLL
+namespace Webshop.BLL.Inventory
 {
     public class Inventory
     {
@@ -19,11 +19,11 @@ namespace Webshop.BLL
 
         public Inventory(string brand, string model, string description, int price)
         {
-            this.ID = ++LastAssignedId;
-            this.Brand = brand;
-            this.Model = model;
-            this.Description = description;
-            this.Price = price;
+            ID = ++LastAssignedId;
+            Brand = brand;
+            Model = model;
+            Description = description;
+            Price = price;
         }
 
         public void AddPhone()

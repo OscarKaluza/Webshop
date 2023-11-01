@@ -1,29 +1,45 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.BLL;
+using Webshop.BLL.Inventory;
+using Webshop.BLL.Phone;
 using Webshop.Models;
 
 namespace Webshop.Controllers
 {
     public class InventoryController : Controller
     {
+        PhoneModel phoneModel = new PhoneModel();
+        PhoneCollection phoneCollection = new PhoneCollection();
+        private List<Phone> allPhoneList = new List<Phone>();
+
         // GET: InventoryController
         public ActionResult Inventory()
         {
             return View();
         }
 
-        // GET: InventoryController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult AddPhoneView()
         {
-            return View();
+            return View("AddPhone");
         }
 
-        // GET: InventoryController/Create
-        public ActionResult Create()
+        public ActionResult ModifyPhoneView()
         {
-            return View();
+            return View("ModifyPhone");
         }
+
+        public ActionResult DeletePhoneView()
+        {
+            allPhoneList = phoneCollection.createPhoneList();
+
+            for (int i = 0; i < allPhoneList.Count; i++)
+            {
+                phoneModel.phones = allPhoneList;
+            }
+
+            return View("DeletePhone", phoneModel);
+        }
+
 
         // POST: InventoryController/Create
         [HttpPost]
@@ -77,5 +93,13 @@ namespace Webshop.Controllers
                 return View();
             }
         }
+
+
+        [HttpPost]
+        public ActionResult DeletePhone()
+        {
+            return View("ValidationView");
+        }
+        
     }
 }

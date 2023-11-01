@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webshop.BLL.Phone;
-using Webshop.DAL;
 using Webshop.Models;
 
 namespace Webshop.Controllers
@@ -9,7 +8,7 @@ namespace Webshop.Controllers
     {
         PhoneModel phoneModel = new PhoneModel();
         PhoneCollection phoneCollection = new PhoneCollection();
-        private List<Phone> allPhoneList= new List<Phone>();
+        private List<Phone> allPhoneList = new List<Phone>();
 
         public IActionResult Phone()
         {

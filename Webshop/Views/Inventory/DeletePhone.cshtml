@@ -1,0 +1,18 @@
+﻿@model Webshop.Models.PhoneModel;
+
+<form asp-controller="Inventory" asp-action="DeletePhone" method="post">
+    <button type="submit">Delete Phone</button>
+</form>
+
+<ul>
+    @for (var i = 0; i < Model.phones.Count; i++)
+    {
+        <li>
+            <img src="https://scalar.usc.edu/works/a-nostalgic-filter/media/thumbnail.png">
+            <p>Brand: @Model.phones[i].Brand</p>
+            <p>Model: @Model.phones[i].Model</p>
+            <p> Price: @Model.phones[i].Price </p>
+            <p>Description: @Model.phones[i].Description</p>
+        </li>
+    }
+

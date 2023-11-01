@@ -1,0 +1,25 @@
+﻿@model Webshop.Models.InventoryModel;
+
+<form method="post">
+    <div class="form-group">
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="Brand" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="Model" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="Price" class="form-control" step="0.01" />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <input type="Description" id="Description" name="Description" class="form-control" step="0.01" />
+    </div>
+
+    <button asp-controller="Inventory" asp-action="AddPhone" type="submit" class="btn btn-primary">Add Phone</button>
+</form>

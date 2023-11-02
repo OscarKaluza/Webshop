@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Webshop.DAL
+namespace Webshop.DAL.Phone
 {
     public class PhoneDAL
     {
         private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
-
 
         public List<PhoneDTO> RetrievePhones()
         {

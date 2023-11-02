@@ -11,7 +11,7 @@ namespace Webshop.Controllers
 
         public IActionResult Phone()
         {
-            phoneModel.phones = phoneCollection.GetPhone();
+            phoneModel.phones = phoneCollection.GetPhones();
 
             return View(phoneModel);
         }

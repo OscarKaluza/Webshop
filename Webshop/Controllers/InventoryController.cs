@@ -12,7 +12,6 @@ namespace Webshop.Controllers
         PhoneCollection phoneCollection = new PhoneCollection();
         private List<Phone> allPhoneList = new List<Phone>();
 
-        // GET: InventoryController
         public ActionResult Inventory()
         {
             return View();
@@ -30,7 +29,7 @@ namespace Webshop.Controllers
 
         public ActionResult DeletePhoneView()
         {
-            allPhoneList = phoneCollection.GetPhone();
+            allPhoneList = phoneCollection.GetPhones();
 
             for (int i = 0; i < allPhoneList.Count; i++)
             {
@@ -41,7 +40,6 @@ namespace Webshop.Controllers
         }
 
 
-        // POST: InventoryController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddPhone(InventoryModel phoneModel)
@@ -51,49 +49,6 @@ namespace Webshop.Controllers
             
             return View("ValidationView");
         }
-
-        // GET: InventoryController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: InventoryController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: InventoryController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: InventoryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
 
         [HttpPost]
         public ActionResult DeletePhone()

@@ -9,29 +9,27 @@ namespace Webshop.BLL.Phone
 {
     public class PhoneCollection
     {
-        private List<Phone> phones = new List<Phone>();
+        public List<Phone> phones = new List<Phone>();
+        private PhoneDAL phoneDAL = new PhoneDAL();
 
-        public List<Phone> createPhoneList()
+        public List<Phone> GetPhone()
         {
-            PhoneDAL phoneDAL = new PhoneDAL();
-            List<string> phoneBrands = phoneDAL.GetPhoneBrands();
-            List<string> phoneModels = phoneDAL.GetPhoneModels();
-            List<int> phonePrices = phoneDAL.GetPhonePrices();
-            List<string> phoneDescription = phoneDAL.getPhoneDescription();
+            List<PhoneDTO> phoneDTOs = phoneDAL.RetrievePhones();
 
-            for (int i = 0; i < phoneBrands.Count; i++)
+            foreach (var phoneDTO in phoneDTOs)
             {
-                Phone phone = new Phone();
-
-                phone.Brand = phoneBrands[i];
-                phone.Model = phoneModels[i];
-                phone.Price = phonePrices[i];
-                phone.Description = phoneDescription[i];
-
+                Phone phone = new Phone
+                {
+                    Brand = phoneDTO.Brand,
+                    Model = phoneDTO.Model,
+                    Price = phoneDTO.Price,
+                    Description = phoneDTO.Description
+                };
                 phones.Add(phone);
             }
 
             return phones;
+
         }
     }
 }

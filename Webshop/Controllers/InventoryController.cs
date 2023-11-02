@@ -30,7 +30,7 @@ namespace Webshop.Controllers
 
         public ActionResult DeletePhoneView()
         {
-            allPhoneList = phoneCollection.createPhoneList();
+            allPhoneList = phoneCollection.GetPhone();
 
             for (int i = 0; i < allPhoneList.Count; i++)
             {

@@ -32,8 +32,5 @@ namespace Webshop.BLL.Phone
             return phones;
         }
 
-        
-        
-
     }
 }

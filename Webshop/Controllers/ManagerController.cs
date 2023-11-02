@@ -41,7 +41,7 @@ namespace Webshop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPhone(ManagerModel phoneModel)
+        public ActionResult Create(ManagerModel phoneModel)
         {
             PhoneManager phone = new PhoneManager(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
             phone.AddPhone();

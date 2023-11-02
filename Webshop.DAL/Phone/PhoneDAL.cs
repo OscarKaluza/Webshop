@@ -50,6 +50,26 @@ namespace Webshop.DAL.Phone
             return phoneDTOs;
         }
 
+        public void AddPhoneInDatabase(string brand, string model, string description, int price)
+        {
+            string sqlQuery = "INSERT INTO `phone`(Brand, Model, Description, Price) VALUES(@brand, @model, @description, @price)";
 
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@brand", brand);
+                    command.Parameters.AddWithValue("@model", model);
+                    command.Parameters.AddWithValue("@description", description);
+                    command.Parameters.AddWithValue("@price", price);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
+
+        }
     }
 }

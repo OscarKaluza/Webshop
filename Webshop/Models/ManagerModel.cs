@@ -1,6 +1,6 @@
 ﻿namespace Webshop.Models
 {
-    public class InventoryModel
+    public class ManagerModel
     {
         public string Brand { get; set; }
         public string Model { get; set; }

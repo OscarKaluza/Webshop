@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Webshop.DAL;
 using Webshop.DAL.Phone;
 
 namespace Webshop.BLL.Phone
@@ -12,7 +13,7 @@ namespace Webshop.BLL.Phone
         private List<Phone> phones = new List<Phone>();
         private PhoneDAL phoneDAL = new PhoneDAL();
 
-        public List<Phone> ConvertToPhoneObject()
+        public List<Phone> GetPhones()
         {
             List<PhoneDTO> phoneDTOs = phoneDAL.RetrievePhones();
 
@@ -31,10 +32,8 @@ namespace Webshop.BLL.Phone
             return phones;
         }
 
-        public List<Phone> GetPhones()
-        {
-            return ConvertToPhoneObject();
-        }
-     
+        
+        
+
     }
 }

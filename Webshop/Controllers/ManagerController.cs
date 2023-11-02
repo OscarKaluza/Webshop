@@ -1,18 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.BLL.Inventory;
 using Webshop.BLL.Phone;
 using Webshop.Models;
 
 namespace Webshop.Controllers
 {
-    public class InventoryController : Controller
+    public class ManagerController : Controller
     {
         PhoneModel phoneModel = new PhoneModel();
         PhoneCollection phoneCollection = new PhoneCollection();
         private List<Phone> allPhoneList = new List<Phone>();
 
-        public ActionResult Inventory()
+        public ActionResult Index()
         {
             return View();
         }
@@ -42,13 +41,14 @@ namespace Webshop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPhone(InventoryModel phoneModel)
+        public ActionResult AddPhone(ManagerModel phoneModel)
         {
-            Inventory phone = new Inventory(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+            PhoneManager phone = new PhoneManager(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
             phone.AddPhone();
             
             return View("ValidationView");
         }
+
 
         [HttpPost]
         public ActionResult DeletePhone()

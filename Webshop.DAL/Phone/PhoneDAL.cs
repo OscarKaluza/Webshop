@@ -16,7 +16,7 @@ namespace Webshop.DAL.Phone
         {
             List<PhoneDTO> phoneDTOs = new List<PhoneDTO>();
 
-            string sqlQuery = "SELECT Brand, Model, Price, Description FROM phone;";
+            string sqlQuery = "SELECT ID, Brand, Model, Price, Description FROM phone;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -28,6 +28,7 @@ namespace Webshop.DAL.Phone
                     {
                         while (reader.Read())
                         {
+                            int id = (int)reader["ID"];
                             string brand = reader["Brand"].ToString();
                             string model = reader["Model"].ToString();
                             int price = (int)reader["Price"];
@@ -35,6 +36,7 @@ namespace Webshop.DAL.Phone
 
                             PhoneDTO phoneDTO = new PhoneDTO
                             {
+                                ID = id,
                                 Brand = brand,
                                 Model = model,
                                 Price = price,
@@ -68,8 +70,23 @@ namespace Webshop.DAL.Phone
                     command.ExecuteNonQuery();
                 }
             }
-
-
         }
+
+        public void DeletePhoneFromDatabase(int id)
+        {
+            string sqlQuery = "DELETE FROM `phone` WHERE id = @id";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

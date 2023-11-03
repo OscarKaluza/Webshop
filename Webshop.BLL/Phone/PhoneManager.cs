@@ -22,11 +22,19 @@ namespace Webshop.BLL.Phone
             Price = price;
         }
 
+        public PhoneManager() { }
+
         public void AddPhone()
         {
             PhoneDAL phoneDAL = new PhoneDAL();
 
             phoneDAL.AddPhoneInDatabase(Brand, Model, Description, Price);
+        }
+
+        public void DeletePhone(int id)
+        {
+            PhoneDAL phoneDAl = new PhoneDAL();
+            phoneDAl.DeletePhoneFromDatabase(id);
         }
 
     }

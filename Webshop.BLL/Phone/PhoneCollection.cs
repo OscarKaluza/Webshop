@@ -21,6 +21,7 @@ namespace Webshop.BLL.Phone
             {
                 Phone phone = new Phone
                 {
+                    ID = phoneDTO.ID,
                     Brand = phoneDTO.Brand,
                     Model = phoneDTO.Model,
                     Price = phoneDTO.Price,

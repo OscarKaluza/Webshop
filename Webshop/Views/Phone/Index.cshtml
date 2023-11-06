@@ -49,6 +49,11 @@
                     <p>Model: @Model.phones[i].Model</p>
                     <p> Price: @Model.phones[i].Price </p>
                     <p>Description: @Model.phones[i].Description</p>
+
+                    <form asp-controller="Order" asp-action="Order" method="post">
+                        <input type="hidden" name="ID" value="@Model.phones[i].ID" />
+                        <button type="submit">Bestel</button>
+                    </form>
                 </li>
             }
         </ul>

@@ -39,7 +39,7 @@
 </head>
 <body>
     <div class="brands">
-        <h2>All Phones</h2>
+        <h2>Alle Telefoons</h2>
         <ul>
             @for (var i = 0; i < Model.phones.Count; i++)
             {
@@ -52,7 +52,7 @@
 
                     <form asp-controller="Phone" asp-action="Delete" method="post">
                         <input type="hidden" name="ID" value="@Model.phones[i].ID" />
-                        <button type="submit">Delete Phone</button>
+                        <button type="submit">Telefoon Verwijderen</button>
                     </form>
                 </li>
             }

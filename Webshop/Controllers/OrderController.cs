@@ -7,24 +7,26 @@ namespace Webshop.Controllers
     public class OrderController : Controller
     {
         public OrderModel ordermodel { get; set; }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        public string Order()
+        public IActionResult Index(OrderModel ordermodel)
         {
-            // Not working
-            return new string($"Phone with ID {ordermodel.ID} has been ordered");
+            return View(ordermodel);
         }
 
         [HttpPost]
-        public IActionResult Order(int ID)
+        public string Order2(int ID)
         {
-            ordermodel = new OrderModel();
+            // Not working
+            return new string($"Phone with ID {ID} has been ordered");
+        }
+
+
+        [HttpPost]
+        public IActionResult Order(int ID, OrderModel ordermodel)
+        {
             ordermodel.ID = ID;
 
-            return View("Index");
+            return RedirectToAction("Index", ordermodel);
         }
     }
 }

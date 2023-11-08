@@ -1,4 +1,6 @@
-﻿<form method="post">
+﻿@model Webshop.Models.OrderModel
+
+<form method="post" asp-controller="Order" asp-action="Order2">
     <div class="form-group">
         <label for="brand">Voornaam:</label>
         <input type="text" id="brand" name="Brand" class="form-control" />
@@ -14,5 +16,8 @@
         <input type="number" id="price" name="Price" class="form-control" step="0.01" />
     </div>
 
-    <a asp-controller="Order" asp-action="Order" class="btn btn-primary">Bestellen</a>
+    <input type="hidden" name="ID" value="@Model.ID" />
+
+    <button type="submit">Bestellen</button>
 </form>
+

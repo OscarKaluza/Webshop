@@ -3,20 +3,20 @@
 <form method="post" asp-controller="Order" asp-action="Order2">
     <div class="form-group">
         <label for="brand">Voornaam:</label>
-        <input type="text" id="brand" name="Brand" class="form-control" />
+        <input type="text" id="Firstname" name="Firstname" class="form-control" />
     </div>
 
     <div class="form-group">
         <label for="model">Achternaam:</label>
-        <input type="text" id="model" name="Model" class="form-control" />
+        <input type="text" id="Lastname" name="Lastname" class="form-control" />
     </div>
 
     <div class="form-group">
         <label for="price">Email:</label>
-        <input type="number" id="price" name="Price" class="form-control" step="0.01" />
+        <input type="number" id="Email" name="Email" class="form-control" step="0.01" />
     </div>
 
-    <input type="hidden" name="ID" value="@Model.ID" />
+    <input type="hidden" name="Brand" value="@Model.Brand" />
 
     <button type="submit">Bestellen</button>
 </form>

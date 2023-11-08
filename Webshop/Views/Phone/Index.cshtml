@@ -51,7 +51,7 @@
                     <p>Description: @Model.phones[i].Description</p>
 
                     <form asp-controller="Order" asp-action="Order" method="post">
-                        <input type="hidden" name="ID" value="@Model.phones[i].ID" />
+                        <input type="hidden" name="Brand" value="@Model.phones[i].Brand" />
                         <button type="submit">Bestel</button>
                     </form>
                 </li>

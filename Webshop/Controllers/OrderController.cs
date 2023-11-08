@@ -14,17 +14,18 @@ namespace Webshop.Controllers
         }
 
         [HttpPost]
-        public string Order2(int ID)
+        public string Order2(string Brand)
         {
-            // Not working
-            return new string($"Phone with ID {ID} has been ordered");
+            return new string($"Your phone has been ordered\n" +
+                              $"Brand: {Brand}\n" +
+                              $"Model: ");
         }
 
 
         [HttpPost]
-        public IActionResult Order(int ID, OrderModel ordermodel)
+        public IActionResult Order(string brand, OrderModel ordermodel)
         {
-            ordermodel.ID = ID;
+            ordermodel.Brand = brand;
 
             return RedirectToAction("Index", ordermodel);
         }

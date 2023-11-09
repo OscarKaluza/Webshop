@@ -88,5 +88,27 @@ namespace Webshop.DAL.Phone
             }
         }
 
+        public void UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
+        {
+            string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@ID", ID);
+                    command.Parameters.AddWithValue("@brand", brand);
+                    command.Parameters.AddWithValue("@model", model);
+                    command.Parameters.AddWithValue("@description", description);
+                    command.Parameters.AddWithValue("@price", price);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
     }
 }

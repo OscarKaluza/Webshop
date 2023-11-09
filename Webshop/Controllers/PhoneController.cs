@@ -7,11 +7,11 @@ namespace Webshop.Controllers
     public class PhoneController : Controller
     {
         PhoneModel phoneModel = new PhoneModel();
-        PhoneCollection phoneCollection = new PhoneCollection();
+        PhoneService phoneManager = new PhoneService();
 
         public IActionResult Index()
         {
-            phoneModel.phones = phoneCollection.GetPhones();
+            phoneModel.phones = phoneManager.GetPhones();
 
             return View(phoneModel);
         }
@@ -32,7 +32,7 @@ namespace Webshop.Controllers
 
         public ActionResult DeletePhoneView()
         {
-            phoneModel.phones = phoneCollection.GetPhones();
+            phoneModel.phones = phoneManager.GetPhones();
 
             return View(phoneModel);
         }
@@ -46,7 +46,7 @@ namespace Webshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PhoneModel phoneModel)
         {
-            PhoneManager phone = new PhoneManager(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+            PhoneService phone = new PhoneService(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
             phone.AddPhone();
 
             return View("ValidationView");
@@ -56,7 +56,7 @@ namespace Webshop.Controllers
         public ActionResult Delete(PhoneModel phoneModel)
         {
 
-            PhoneManager phoneManager = new PhoneManager();
+            PhoneService phoneManager = new PhoneService();
             phoneManager.DeletePhone(phoneModel.ID);
 
             return View("ValidationView");

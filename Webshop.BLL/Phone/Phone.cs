@@ -10,7 +10,5 @@ namespace Webshop.BLL.Phone
         public string Model { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
-
-
     }
 }

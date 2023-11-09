@@ -9,17 +9,14 @@ namespace Webshop.BLL.Phone
 {
     public class PhoneManager
     {
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public string Description { get; set; }
-        public int Price { get; set; }
+        Phone phone = new Phone();
 
         public PhoneManager(string brand, string model, string description, int price)
         {
-            Brand = brand;
-            Model = model;
-            Description = description;
-            Price = price;
+            phone.Brand = brand;
+            phone.Model = model;
+            phone.Description = description;
+            phone.Price = price;
         }
 
         public PhoneManager() { }
@@ -28,7 +25,7 @@ namespace Webshop.BLL.Phone
         {
             PhoneDAL phoneDAL = new PhoneDAL();
 
-            phoneDAL.AddPhoneInDatabase(Brand, Model, Description, Price);
+            phoneDAL.AddPhoneInDatabase(phone.Brand, phone.Model, phone.Description, phone.Price);
         }
 
         public void DeletePhone(int id)

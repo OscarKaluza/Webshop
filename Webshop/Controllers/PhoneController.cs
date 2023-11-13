@@ -44,6 +44,7 @@ namespace Webshop.Controllers
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PhoneModel phoneModel)
@@ -72,7 +73,7 @@ namespace Webshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Modify(PhoneModel phoneModel, int id)
+        public ActionResult Modify(PhoneModel phoneModel)
         {
             phoneService.ModifyPhone(phoneModel.ID, phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
 

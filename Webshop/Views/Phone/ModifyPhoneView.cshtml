@@ -1,35 +1,63 @@
-﻿<!DOCTYPE html>
+﻿@model Webshop.Models.PhoneModel;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Phone Form</title>
+    <title>Phone Webshop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .brands {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+            .brands ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: 100;
+            }
+
+            .brands li {
+                margin: 0;
+                width: 30%;
+                text-align: 100;
+    </style>
 </head>
 <body>
+    <div class="brands">
+        <h2>Alle Telefoons</h2>
+        <ul>
+            @for (var i = 0; i < Model.phones.Count; i++)
+            {
+                <li>
+                    <img src="https://scalar.usc.edu/works/a-nostalgic-filter/media/thumbnail.png">
+                    <p>Brand: @Model.phones[i].Brand</p>
+                    <p>Model: @Model.phones[i].Model</p>
+                    <p>Price: @Model.phones[i].Price</p>
+                    <p>Description: @Model.phones[i].Description</p>
 
-    <h2>Update Phone</h2>
+                    <form asp-controller="Phone" asp-action="Edit" method="post">
+                        <input type="hidden" name="ID" value="@Model.phones[i].ID" />
+                        <button type="submit">Telefoon Bewerken</button>
+                    </form>
+                </li>
+            }
+        </ul>
 
-    <form action="update_phone.php" method="post">
-        <label for="phoneId">Select Phone to Update:</label>
-        <select id="phoneId" name="phoneId" required>
-            <option value="1">Phone 1</option>
-            <option value="2">Phone 2</option>
-        </select><br><br>
-
-        <label for="brand">Brand:</label>
-        <input type="text" id="brand" name="brand" required><br><br>
-
-        <label for="model">Model:</label>
-        <input type="text" id="model" name="model" required><br><br>
-
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea><br><br>
-
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" required><br><br>
-
-        <input type="submit" value="Update Phone">
-    </form>
-
+    </div>
 </body>
 </html>

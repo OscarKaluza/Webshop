@@ -7,11 +7,11 @@ namespace Webshop.Controllers
     public class PhoneController : Controller
     {
         PhoneModel phoneModel = new PhoneModel();
-        PhoneService phoneManager = new PhoneService();
+        PhoneService phoneService = new PhoneService();
 
         public IActionResult Index()
         {
-            phoneModel.phones = phoneManager.GetPhones();
+            phoneModel.phones = phoneService.GetPhones();
 
             return View(phoneModel);
         }
@@ -27,12 +27,14 @@ namespace Webshop.Controllers
 
         public ActionResult ModifyPhoneView()
         {
-            return View();
+            phoneModel.phones = phoneService.GetPhones();
+
+            return View(phoneModel);
         }
 
         public ActionResult DeletePhoneView()
         {
-            phoneModel.phones = phoneManager.GetPhones();
+            phoneModel.phones = phoneService.GetPhones();
 
             return View(phoneModel);
         }
@@ -60,6 +62,22 @@ namespace Webshop.Controllers
             phoneManager.DeletePhone(phoneModel.ID);
 
             return View("ValidationView");
+        }
+
+        [HttpPost]
+
+        public ActionResult Edit(PhoneModel phoneModel)
+        {
+            return View("EditPhoneView", phoneModel);
+        }
+
+        [HttpPost]
+        public ActionResult Modify(PhoneModel phoneModel, int id)
+        {
+            phoneService.ModifyPhone(phoneModel.ID, phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+
+            return RedirectToAction("ValidationView", phoneModel);
+            
         }
 
     }

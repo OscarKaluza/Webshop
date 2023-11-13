@@ -54,5 +54,10 @@ namespace Webshop.BLL.Phone
             phoneDAL.DeletePhoneFromDatabase(id);
         }
 
+        public void ModifyPhone(int id, string brand, string model, string description, int price)
+        {
+            phoneDAL.UpdatePhoneInDatabase(id, brand, model, description, price);
+        }
+
     }
 }

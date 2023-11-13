@@ -1,6 +1,7 @@
 ﻿using Webshop.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
+using ZstdSharp.Unsafe;
 
 namespace Webshop.Controllers
 {
@@ -14,19 +15,18 @@ namespace Webshop.Controllers
         }
 
         [HttpPost]
-        public string Order2(string Brand)
+        public string Order2(OrderModel orderModel)
         {
             return new string($"Your phone has been ordered\n" +
-                              $"Brand: {Brand}\n" +
-                              $"Model: ");
+                              $"Brand: {orderModel.Brand}\n" +
+                              $"Model: {orderModel.Model}\n" +
+                              $"Total: {orderModel.Price}");
         }
 
 
         [HttpPost]
-        public IActionResult Order(string brand, OrderModel ordermodel)
+        public IActionResult Order(OrderModel ordermodel)
         {
-            ordermodel.Brand = brand;
-
             return RedirectToAction("Index", ordermodel);
         }
     }

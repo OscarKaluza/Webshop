@@ -52,6 +52,10 @@
 
                     <form asp-controller="Order" asp-action="Order" method="post">
                         <input type="hidden" name="Brand" value="@Model.phones[i].Brand" />
+                        <input type="hidden" name="Model" value="@Model.phones[i].Model" />
+                        <input type="hidden" name="Price" value="@Model.phones[i].Price" />
+
+
                         <button type="submit">Bestel</button>
                     </form>
                 </li>

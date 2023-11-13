@@ -13,15 +13,6 @@ namespace Webshop.BLL.Phone
         PhoneDAL phoneDAL = new PhoneDAL();
         private List<Phone> phones = new List<Phone>();
 
-        public PhoneService(string brand, string model, string description, int price)
-        {
-            phone.Brand = brand;
-            phone.Model = model;
-            phone.Description = description;
-            phone.Price = price;
-        }
-
-        public PhoneService() { }
 
         public List<Phone> GetPhones()
         {
@@ -43,10 +34,10 @@ namespace Webshop.BLL.Phone
             return phones;
         }
 
-        public void AddPhone()
+        public void AddPhone(string brand, string model, string description, int price)
         {
 
-            phoneDAL.AddPhoneInDatabase(phone.Brand, phone.Model, phone.Description, phone.Price);
+            phoneDAL.AddPhoneInDatabase(brand, model, description, price);
         }
 
         public void DeletePhone(int id)

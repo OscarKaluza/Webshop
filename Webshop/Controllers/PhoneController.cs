@@ -49,8 +49,7 @@ namespace Webshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PhoneModel phoneModel)
         {
-            PhoneService phone = new PhoneService(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
-            phone.AddPhone();
+            phoneService.AddPhone(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
 
             return View("ValidationView");
         }
@@ -59,8 +58,7 @@ namespace Webshop.Controllers
         public ActionResult Delete(PhoneModel phoneModel)
         {
 
-            PhoneService phoneManager = new PhoneService();
-            phoneManager.DeletePhone(phoneModel.ID);
+            phoneService.DeletePhone(phoneModel.ID);
 
             return View("ValidationView");
         }

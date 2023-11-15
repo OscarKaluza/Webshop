@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
 using ZstdSharp.Unsafe;
+using Webshop.DAL.Order;
 
 namespace Webshop.Controllers
 {
@@ -11,6 +12,8 @@ namespace Webshop.Controllers
 
         public IActionResult Index(OrderModel ordermodel)
         {
+            OrderDAL orderDal = new OrderDAL();
+            orderDal.RegisterOrderDetails(3, 1, 2000);
             return View(ordermodel);
         }
 

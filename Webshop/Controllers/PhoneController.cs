@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webshop.BLL.Phone;
+using Webshop.DAL.Phone;
 using Webshop.Models;
 
 namespace Webshop.Controllers
@@ -7,7 +8,7 @@ namespace Webshop.Controllers
     public class PhoneController : Controller
     {
         PhoneModel phoneModel = new PhoneModel();
-        PhoneService phoneService = new PhoneService();
+        PhoneService phoneService = new PhoneService(new PhoneDAL());
 
         public IActionResult Index()
         {
@@ -49,7 +50,13 @@ namespace Webshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PhoneModel phoneModel)
         {
-            phoneService.AddPhone(phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+            Phone newPhone = new Phone();
+            newPhone.Brand = phoneModel.Brand;
+            newPhone.Model = phoneModel.Model;
+            newPhone.Description = phoneModel.Description;
+            newPhone.Price = phoneModel.Price;
+
+            phoneService.AddPhone(newPhone);
 
             return View("ValidationView");
         }

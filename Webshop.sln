@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.DAL", "Webshop.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.BLL", "Webshop.BLL\Webshop.BLL.csproj", "{6AAD8C22-1206-48C8-8AE1-ED53C7E10131}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestBLL", "UnitTestBLL\UnitTestBLL.csproj", "{17565C3F-1C74-45C6-B385-00231CF3679B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6AAD8C22-1206-48C8-8AE1-ED53C7E10131}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AAD8C22-1206-48C8-8AE1-ED53C7E10131}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AAD8C22-1206-48C8-8AE1-ED53C7E10131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17565C3F-1C74-45C6-B385-00231CF3679B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17565C3F-1C74-45C6-B385-00231CF3679B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17565C3F-1C74-45C6-B385-00231CF3679B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17565C3F-1C74-45C6-B385-00231CF3679B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,13 +10,18 @@ namespace Webshop.BLL.Phone
     public class PhoneService
     {
         Phone phone = new Phone();
-        PhoneDAL phoneDAL = new PhoneDAL();
         private List<Phone> phones = new List<Phone>();
+        IphoneDAL Iphone;
+
+        public PhoneService(IphoneDAL phone) 
+        { 
+            Iphone = phone;
+        }
 
 
         public List<Phone> GetPhones()
         {
-            List<PhoneDTO> phoneDTOs = phoneDAL.RetrievePhones();
+            List<PhoneDTO> phoneDTOs = Iphone.RetrievePhones();
 
             foreach (var phoneDTO in phoneDTOs)
             {
@@ -34,19 +39,27 @@ namespace Webshop.BLL.Phone
             return phones;
         }
 
-        public void AddPhone(string brand, string model, string description, int price)
+        public void AddPhone(Phone phone)
         {
-            phoneDAL.AddPhoneInDatabase(brand, model, description, price);
+            PhoneDTO newPhone = new PhoneDTO
+            {
+                Brand = phone.Brand,
+                Model = phone.Model,
+                Description = phone.Description,
+                Price = phone.Price 
+            };
+
+            Iphone.AddPhoneInDatabase(newPhone);
         }
 
         public void DeletePhone(int id)
         {
-            phoneDAL.DeletePhoneFromDatabase(id);
+            Iphone.DeletePhoneFromDatabase(id);
         }
 
         public void ModifyPhone(int id, string brand, string model, string description, int price)
         {
-            phoneDAL.UpdatePhoneInDatabase(id, brand, model, description, price);
+            Iphone.UpdatePhoneInDatabase(id, brand, model, description, price);
         }
 
     }

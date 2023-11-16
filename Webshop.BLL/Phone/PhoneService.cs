@@ -36,7 +36,6 @@ namespace Webshop.BLL.Phone
 
         public void AddPhone(string brand, string model, string description, int price)
         {
-
             phoneDAL.AddPhoneInDatabase(brand, model, description, price);
         }
 

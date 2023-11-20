@@ -11,7 +11,7 @@ namespace Webshop.BLL.Phone
     {
         public List<PhoneDTO> RetrievePhones();
         public void AddPhoneInDatabase(PhoneDTO phone);
-        public void DeletePhoneFromDatabase(int id);
-        public void UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price);
+        public bool DeletePhoneFromDatabase(int id);
+        public bool UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price);
     }
 }

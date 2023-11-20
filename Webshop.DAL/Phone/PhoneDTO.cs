@@ -14,5 +14,14 @@ namespace Webshop.DAL.Phone
         public string Model { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null || !(obj is PhoneDTO))
+                return false;
+
+            var other = (PhoneDTO)obj;
+            return ID == other.ID && Brand == other.Brand && Model == other.Model && Description == other.Description && Price == other.Price;
+        }
     }
 }

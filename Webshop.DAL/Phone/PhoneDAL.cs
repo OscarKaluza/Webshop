@@ -1,10 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Webshop.BLL.Phone;
 
 namespace Webshop.DAL.Phone
@@ -59,57 +53,85 @@ namespace Webshop.DAL.Phone
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.Open();
-
-                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@brand", phone.Brand);
-                    command.Parameters.AddWithValue("@model", phone.Model);
-                    command.Parameters.AddWithValue("@description", phone.Description);
-                    command.Parameters.AddWithValue("@price", phone.Price);
+                    connection.Open();
 
-                    command.ExecuteNonQuery();
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@brand", phone.Brand);
+                        command.Parameters.AddWithValue("@model", phone.Model);
+                        command.Parameters.AddWithValue("@description", phone.Description);
+                        command.Parameters.AddWithValue("@price", phone.Price);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
                 }
             }
         }
 
 
-        public void DeletePhoneFromDatabase(int id)
+
+        public bool DeletePhoneFromDatabase(int id)
         {
             string sqlQuery = "DELETE FROM `phone` WHERE id = @id";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.Open();
-
-                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@id", id);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    return false;
                 }
             }
         }
 
-        public void UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
+
+        public bool UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
         {
             string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.Open();
-
-                using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@ID", ID);
-                    command.Parameters.AddWithValue("@brand", brand);
-                    command.Parameters.AddWithValue("@model", model);
-                    command.Parameters.AddWithValue("@description", description);
-                    command.Parameters.AddWithValue("@price", price);
+                    connection.Open();
 
-                    command.ExecuteNonQuery();
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", ID);
+                        command.Parameters.AddWithValue("@brand", brand);
+                        command.Parameters.AddWithValue("@model", model);
+                        command.Parameters.AddWithValue("@description", description);
+                        command.Parameters.AddWithValue("@price", price);
+
+                        command.ExecuteNonQuery();
+                    }
+
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
                 }
             }
         }
+
 
 
     }

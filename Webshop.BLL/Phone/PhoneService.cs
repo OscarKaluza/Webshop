@@ -9,7 +9,6 @@ namespace Webshop.BLL.Phone
 {
     public class PhoneService
     {
-        Phone phone = new Phone();
         private List<Phone> phones = new List<Phone>();
         IphoneDAL Iphone;
 
@@ -17,7 +16,6 @@ namespace Webshop.BLL.Phone
         { 
             Iphone = phone;
         }
-
 
         public List<Phone> GetPhones()
         {
@@ -52,14 +50,24 @@ namespace Webshop.BLL.Phone
             Iphone.AddPhoneInDatabase(newPhone);
         }
 
-        public void DeletePhone(int id)
+        public bool DeletePhone(int id)
         {
-            Iphone.DeletePhoneFromDatabase(id);
+            if (Iphone.DeletePhoneFromDatabase(id))
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void ModifyPhone(int id, string brand, string model, string description, int price)
+        public bool ModifyPhone(int id, string brand, string model, string description, int price)
         {
-            Iphone.UpdatePhoneInDatabase(id, brand, model, description, price);
+            if (Iphone.UpdatePhoneInDatabase(id, brand, model, description, price))
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

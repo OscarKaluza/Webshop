@@ -10,26 +10,33 @@ namespace Webshop.DAL.Phone
 {
     public class DummyPhoneDAL : IphoneDAL
     {
-        public PhoneDTO InsertedPhone { get; set; }
         public List<PhoneDTO> phones { get; set; }
-        public int deletedphone {  get; set; }
-
-        public void AddPhoneInDatabase(PhoneDTO phone)
-        {
-            InsertedPhone = phone;
-        }
+        public PhoneDTO InsertedPhone { get; set; }
 
         public List<PhoneDTO> RetrievePhones()
         {
+            phones = new List<PhoneDTO>();
             return phones;
         }
 
-        public void DeletePhoneFromDatabase(int id) 
+        public void AddPhoneInDatabase(PhoneDTO phonedto)
         {
+            phonedto.ID = 1;
+            phonedto.Brand = "test";
+            phonedto.Model = "test";
+            phonedto.Description = "test";
+            phonedto.Price = 800;
+            InsertedPhone = phonedto;
         }
 
-        public void UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
+        public bool DeletePhoneFromDatabase(int id) 
         {
+            return true;
+        }
+
+        public bool UpdatePhoneInDatabase(int id, string brand, string model, string description, int price)
+        {
+            return true;
         }
 
 

@@ -25,26 +25,53 @@ namespace UnitTestBLL
             Assert.IsType<List<Phone>>(result);
         }
 
-
         [Fact]
-
         public void check_if_phone_is_being_added()
         {
-            PhoneService phoneservice = new PhoneService(new DummyPhoneDAL());
-            Phone newTestPhone = new Phone();
+            DummyPhoneDAL phoneDAL = new DummyPhoneDAL();
+            PhoneService phoneservice = new PhoneService(phoneDAL);
 
-            newTestPhone.Brand = "test";
-            newTestPhone.Model = "test";
-            newTestPhone.Description = "test";
-            newTestPhone.Price = 2;
-
-
-            phoneservice.AddPhone(newTestPhone);
-
-            Assert.
+            phoneservice.AddPhone(new Phone
+            {
+                Brand = "test",
+                Model = "test",
+                Description = "test",
+                Price = 800
+            });
+     
+            Assert.Equal(new PhoneDTO
+            {
+                ID = 1,
+                Brand = "test",
+                Model = "test",
+                Description = "test",
+                Price = 800
+            }, phoneDAL.InsertedPhone);
 
         }
-        
 
+        [Fact]
+        public void check_if_phone_is_succesfully_deleted()
+        {
+            PhoneService phoneService = new PhoneService(new DummyPhoneDAL());
+            Phone newTestPhone = new Phone();
+
+            Assert.True(phoneService.DeletePhone(1));
+        }
+
+        [Fact]
+        public void check_if_phone_is_modified_succesfully()
+        {
+            PhoneService phoneService = new PhoneService(new DummyPhoneDAL());
+            Phone newTestPhone = new Phone();
+
+            newTestPhone.ID = 1;
+            newTestPhone.Brand = "Test";
+            newTestPhone.Model = "Test";
+            newTestPhone.Description = "Test";
+            newTestPhone.Price = 800;
+
+            Assert.True(phoneService.ModifyPhone(newTestPhone.ID, newTestPhone.Brand, newTestPhone.Model, newTestPhone.Description, newTestPhone.Price));
+        }
     }
 }

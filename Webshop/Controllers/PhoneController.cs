@@ -64,8 +64,16 @@ namespace Webshop.Controllers
         [HttpPost]
         public ActionResult Delete(PhoneModel phoneModel)
         {
+            Phone phoneToDelete = new Phone
+            {
+                ID = phoneModel.ID,
+                Brand = phoneModel.Brand,
+                Model = phoneModel.Model,
+                Description = phoneModel.Description,
+                Price = phoneModel.Price
+            };
 
-            phoneService.DeletePhone(phoneModel.ID);
+            phoneService.DeletePhone(phoneToDelete);
 
             return View("ValidationView");
         }

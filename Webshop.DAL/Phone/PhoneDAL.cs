@@ -75,33 +75,34 @@ namespace Webshop.DAL.Phone
 
 
 
-        public bool DeletePhoneFromDatabase(int id)
-        {
-            string sqlQuery = "DELETE FROM `phone` WHERE id = @id";
+		public bool DeletePhoneFromDatabase(PhoneDTO phone)
+		{
+			string sqlQuery = "DELETE FROM `phone` WHERE id = @id";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
+			using (MySqlConnection connection = new MySqlConnection(connectionString))
+			{
+				try
+				{
+					connection.Open();
 
-                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", id);
-                        command.ExecuteNonQuery();
-                        return true;
-                    }
-                }
+					using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+					{
+						command.Parameters.AddWithValue("@id", phone.ID); 
+						command.ExecuteNonQuery();
+						return true;
+					}
+				}
 
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            }
-        }
+				catch (Exception ex)
+				{
+					return false;
+				}
+			}
+		}
 
 
-        public bool UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
+
+		public bool UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
         {
             string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
 

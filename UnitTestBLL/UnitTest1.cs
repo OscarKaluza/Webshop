@@ -51,13 +51,22 @@ namespace UnitTestBLL
         }
 
         [Fact]
-        public void check_if_phone_is_succesfully_deleted()
+        public void Check_If_Phone_Is_Successfully_Deleted()
         {
-            PhoneService phoneService = new PhoneService(new DummyPhoneDAL());
-            Phone newTestPhone = new Phone();
+            DummyPhoneDAL phoneDAL = new DummyPhoneDAL();
+            PhoneService phoneService = new PhoneService(phoneDAL);
 
-            Assert.True(phoneService.DeletePhone(1));
+            phoneService.DeletePhone(new Phone
+            {
+				ID = 1,
+				Brand = "test",
+				Model = "test",
+				Description = "test",
+				Price = 800
+			});
+            Assert.Empty(phoneDAL.allPhones);
         }
+
 
         [Fact]
         public void check_if_phone_is_modified_succesfully()
@@ -73,5 +82,7 @@ namespace UnitTestBLL
 
             Assert.True(phoneService.ModifyPhone(newTestPhone.ID, newTestPhone.Brand, newTestPhone.Model, newTestPhone.Description, newTestPhone.Price));
         }
-    }
+
+		
+	}
 }

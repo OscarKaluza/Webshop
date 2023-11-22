@@ -50,9 +50,18 @@ namespace Webshop.BLL.Phone
             Iphone.AddPhoneInDatabase(newPhone);
         }
 
-        public bool DeletePhone(int id)
+        public bool DeletePhone(Phone phone)
         {
-            if (Iphone.DeletePhoneFromDatabase(id))
+            PhoneDTO phoneToDelete = new PhoneDTO
+            {
+                ID = phone.ID,
+                Brand = phone.Brand,
+                Model = phone.Model,
+                Description = phone.Description,
+                Price = phone.Price
+            };
+
+            if (Iphone.DeletePhoneFromDatabase(phoneToDelete))
             {
                 return true;
             }

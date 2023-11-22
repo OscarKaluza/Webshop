@@ -4,14 +4,16 @@ namespace Webshop.DAL.Phone
 {
 	public class DummyPhoneDAL : IphoneDAL
 	{
-		public List<PhoneDTO> phones { get; set; }
-		public PhoneDTO InsertedPhone { get; set; }
 		public List<PhoneDTO> allPhones { get; set; }
+		public PhoneDTO Phone { get; set; }
 
 		public List<PhoneDTO> RetrievePhones()
 		{
-			phones = new List<PhoneDTO>();
-			return phones;
+			allPhones = new List<PhoneDTO>();
+			Phone = new PhoneDTO();
+		
+			allPhones.Add(Phone);
+			return allPhones;
 		}
 
 		public void AddPhoneInDatabase(PhoneDTO phonedto)
@@ -21,7 +23,7 @@ namespace Webshop.DAL.Phone
 			phonedto.Model = "test";
 			phonedto.Description = "test";
 			phonedto.Price = 800;
-			InsertedPhone = phonedto;
+			Phone = phonedto;
 		}
 
 		public bool DeletePhoneFromDatabase(PhoneDTO phone)
@@ -49,11 +51,14 @@ namespace Webshop.DAL.Phone
 			return false;
 		}
 
-
-
-		public bool UpdatePhoneInDatabase(int id, string brand, string model, string description, int price)
+		public void UpdatePhoneInDatabase(PhoneDTO phone)
 		{
-			return true;
+			phone.ID = 1;
+			phone.Brand = "test";
+			phone.Model = "test";
+			phone.Description = "test";
+			phone.Price = 800;
+			Phone = phone;
 		}
 
 	}

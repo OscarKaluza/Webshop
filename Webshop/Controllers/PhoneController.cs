@@ -88,7 +88,16 @@ namespace Webshop.Controllers
         [HttpPost]
         public ActionResult Modify(PhoneModel phoneModel)
         {
-            phoneService.ModifyPhone(phoneModel.ID, phoneModel.Brand, phoneModel.Model, phoneModel.Description, phoneModel.Price);
+			Phone modifiedPhone = new Phone
+			{
+				ID = phoneModel.ID,
+				Brand = phoneModel.Brand,
+				Model = phoneModel.Model,
+				Description = phoneModel.Description,
+				Price = phoneModel.Price
+			};
+
+			phoneService.ModifyPhone(modifiedPhone);
 
             return RedirectToAction("ValidationView", phoneModel);
             

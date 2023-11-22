@@ -46,7 +46,7 @@ namespace UnitTestBLL
                 Model = "test",
                 Description = "test",
                 Price = 800
-            }, phoneDAL.InsertedPhone);
+            }, phoneDAL.Phone);
 
         }
 
@@ -71,18 +71,22 @@ namespace UnitTestBLL
         [Fact]
         public void check_if_phone_is_modified_succesfully()
         {
-            PhoneService phoneService = new PhoneService(new DummyPhoneDAL());
-            Phone newTestPhone = new Phone();
+            DummyPhoneDAL phoneDAL = new DummyPhoneDAL();
+            PhoneService phoneService = new PhoneService(phoneDAL);
 
-            newTestPhone.ID = 1;
-            newTestPhone.Brand = "Test";
-            newTestPhone.Model = "Test";
-            newTestPhone.Description = "Test";
-            newTestPhone.Price = 800;
+            Phone phoneToModify = new Phone
+            {
+                ID = 2,
+                Brand = "test2",
+                Model = "test2",
+                Description = "test2",
+                Price = 900
+            };
 
-            Assert.True(phoneService.ModifyPhone(newTestPhone.ID, newTestPhone.Brand, newTestPhone.Model, newTestPhone.Description, newTestPhone.Price));
+            PhoneDTO newModifiedPhone = phoneService.ModifyPhone(phoneToModify);
+
+			Assert.Equal(newModifiedPhone, phoneDAL.Phone);
         }
 
-		
-	}
+    }
 }

@@ -69,14 +69,19 @@ namespace Webshop.BLL.Phone
             return false;
         }
 
-        public bool ModifyPhone(int id, string brand, string model, string description, int price)
+        public PhoneDTO ModifyPhone(Phone phone)
         {
-            if (Iphone.UpdatePhoneInDatabase(id, brand, model, description, price))
-            {
-                return true;
-            }
+			PhoneDTO modifiedPhone = new PhoneDTO
+			{
+				ID = phone.ID,
+				Brand = phone.Brand,
+				Model = phone.Model,
+				Description = phone.Description,
+				Price = phone.Price
+			};
 
-            return false;
+            Iphone.UpdatePhoneInDatabase(modifiedPhone);
+            return modifiedPhone;
         }
 
     }

@@ -102,38 +102,35 @@ namespace Webshop.DAL.Phone
 
 
 
-		public bool UpdatePhoneInDatabase(int ID, string brand, string model, string description, int price)
-        {
-            string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
+		public void UpdatePhoneInDatabase(PhoneDTO phone)
+		{
+			string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
+			using (MySqlConnection connection = new MySqlConnection(connectionString))
+			{
+				try
+				{
+					connection.Open();
 
-                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@ID", ID);
-                        command.Parameters.AddWithValue("@brand", brand);
-                        command.Parameters.AddWithValue("@model", model);
-                        command.Parameters.AddWithValue("@description", description);
-                        command.Parameters.AddWithValue("@price", price);
+					using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+					{
+						command.Parameters.AddWithValue("@ID", phone.ID); 
+						command.Parameters.AddWithValue("@brand", phone.Brand); 
+						command.Parameters.AddWithValue("@model", phone.Model);
+						command.Parameters.AddWithValue("@description", phone.Description);
+						command.Parameters.AddWithValue("@price", phone.Price);
 
-                        command.ExecuteNonQuery();
-                    }
-
-
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            }
-        }
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (Exception ex)
+				{
+				}
+			}
+		}
 
 
 
-    }
+
+	}
 }

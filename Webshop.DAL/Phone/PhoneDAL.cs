@@ -73,8 +73,6 @@ namespace Webshop.DAL.Phone
             }
         }
 
-
-
 		public bool DeletePhoneFromDatabase(PhoneDTO phone)
 		{
 			string sqlQuery = "DELETE FROM `phone` WHERE id = @id";

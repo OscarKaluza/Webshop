@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Webshop.BLL.Phone;
 using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
 namespace Webshop.DAL.Order
@@ -11,7 +12,6 @@ namespace Webshop.DAL.Order
     public class OrderDAL
     {
         private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
-
         public int RegisterOrder(int customerID, int total)
         {
             string sqlQuery = "INSERT INTO `orders`(`CustomerID`, `Total`) VALUES (@customerID, @total); SELECT LAST_INSERT_ID();";
@@ -25,7 +25,6 @@ namespace Webshop.DAL.Order
                     command.Parameters.AddWithValue("@CustomerID", customerID);
                     command.Parameters.AddWithValue("@Total", total);
 
-                    // ExecuteScalar is used to retrieve the result of the SELECT LAST_INSERT_ID() query
                     int orderId = Convert.ToInt32(command.ExecuteScalar());
 
                     return orderId;

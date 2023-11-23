@@ -17,7 +17,6 @@ namespace Webshop.BLL.Phone
             Iphone = phone;
         }
 
-
         public List<Phone> GetPhones()
         {
             List<PhoneDTO> phoneDTOs = Iphone.RetrievePhones();

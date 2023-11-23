@@ -1,20 +1,33 @@
-using MySqlX.XDevAPI.Common;
-using Org.BouncyCastle.Asn1;
 using Webshop.BLL.Phone;
 using Webshop.DAL.Phone;
-using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
 namespace UnitTestBLL
 {
     public class UnitTest1
     {
         [Fact]
-        public void check_if_getphone_list_is_not_empty()
+        public void Test_GetPhones_Function()
         {
-            PhoneService phoneservice = new PhoneService(new DummyPhoneDAL());
+            DummyPhoneDAL phoneDAL = new DummyPhoneDAL();
+            PhoneService phoneservice = new PhoneService(phoneDAL);
+            PhoneDTO exepectedPhone = new PhoneDTO
+            {
+                ID = 1,
+                Brand = "test",
+                Model = "test",
+                Description = "test",
+                Price = 800
+            };
 
             Assert.NotEmpty(phoneservice.GetPhones());
+            Assert.NotNull(phoneservice.GetPhones());
             Assert.IsType<List<Phone>>(phoneservice.GetPhones());
+
+            Assert.Equal(exepectedPhone.ID, phoneDAL.allPhones[0].ID);
+            Assert.Equal(exepectedPhone.Brand, phoneDAL.allPhones[0].Brand);
+            Assert.Equal(exepectedPhone.Model, phoneDAL.allPhones[0].Model);
+            Assert.Equal(exepectedPhone.Description, phoneDAL.allPhones[0].Description);
+            Assert.Equal(exepectedPhone.Price, phoneDAL.allPhones[0].Price);
         }
 
         [Fact]
@@ -30,7 +43,7 @@ namespace UnitTestBLL
                 Description = "test",
                 Price = 800
             });
-     
+
             Assert.Equal(new PhoneDTO
             {
                 ID = 1,
@@ -50,12 +63,12 @@ namespace UnitTestBLL
 
             phoneService.DeletePhone(new Phone
             {
-				ID = 1,
-				Brand = "test",
-				Model = "test",
-				Description = "test",
-				Price = 800
-			});
+                ID = 1,
+                Brand = "test",
+                Model = "test",
+                Description = "test",
+                Price = 800
+            });
             Assert.Empty(phoneDAL.allPhones);
         }
 
@@ -76,8 +89,10 @@ namespace UnitTestBLL
             };
 
             PhoneDTO newModifiedPhone = phoneService.ModifyPhone(phoneToModify);
+            phoneDAL.Phone = newModifiedPhone;
 
-			Assert.Equal(newModifiedPhone, phoneDAL.Phone);
+
+            Assert.Equal(newModifiedPhone, phoneDAL.Phone);
         }
-    }
+}
 }

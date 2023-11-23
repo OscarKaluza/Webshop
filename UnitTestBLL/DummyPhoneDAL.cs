@@ -7,14 +7,22 @@ namespace Webshop.DAL.Phone
 		public List<PhoneDTO> allPhones { get; set; }
 		public PhoneDTO Phone { get; set; }
 
-		public List<PhoneDTO> RetrievePhones()
+        public List<PhoneDTO> RetrievePhones()
 		{
 			allPhones = new List<PhoneDTO>();
-			PhoneDTO phone = new PhoneDTO();
+			PhoneDTO phone = new PhoneDTO
+			{
+				ID = 1,
+				Brand = "test",
+				Model = "test",
+				Description = "test",
+				Price = 800
+			};
 
-			allPhones.Add(phone);
+            allPhones.Add(phone);
 
-			return allPhones;
+
+            return allPhones;
 		}
 
 		public void AddPhoneInDatabase(PhoneDTO phonedto)
@@ -52,14 +60,18 @@ namespace Webshop.DAL.Phone
 			return false;
 		}
 
-		public void UpdatePhoneInDatabase(PhoneDTO phone)
+		public void UpdatePhoneInDatabase(PhoneDTO existingPhone)
 		{
-			phone.ID = 1;
-			phone.Brand = "test";
-			phone.Model = "test";
-			phone.Description = "test";
-			phone.Price = 800;
-			Phone = phone;
+            existingPhone = new PhoneDTO
+			{
+				ID = 1,
+				Brand = "test",
+				Model = "test",
+				Description = "test",
+				Price = 800
+			};
+
+			Phone = existingPhone;
 		}
 
 	}

@@ -1,3 +1,4 @@
+using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Asn1;
 using Webshop.BLL.Phone;
 using Webshop.DAL.Phone;
@@ -13,16 +14,7 @@ namespace UnitTestBLL
             PhoneService phoneservice = new PhoneService(new DummyPhoneDAL());
 
             Assert.NotEmpty(phoneservice.GetPhones());
-        }
-
-        [Fact]
-        public void check_if_phone_list_returns_phones()
-        {
-            PhoneService phoneservice = new PhoneService(new DummyPhoneDAL());
-
-            var result = phoneservice.GetPhones();
-
-            Assert.IsType<List<Phone>>(result);
+            Assert.IsType<List<Phone>>(phoneservice.GetPhones());
         }
 
         [Fact]
@@ -87,6 +79,5 @@ namespace UnitTestBLL
 
 			Assert.Equal(newModifiedPhone, phoneDAL.Phone);
         }
-
     }
 }

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
 using ZstdSharp.Unsafe;
-using Webshop.DAL.Order;
 
 namespace Webshop.Controllers
 {

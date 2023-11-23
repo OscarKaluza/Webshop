@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Webshop.BLL\Webshop.BLL.csproj" />
+    <ProjectReference Include="..\Webshop.DAL\Webshop.DAL.csproj" />
   </ItemGroup>
 
 </Project>

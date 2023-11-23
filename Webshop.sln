@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.DAL", "Webshop.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.BLL", "Webshop.BLL\Webshop.BLL.csproj", "{6AAD8C22-1206-48C8-8AE1-ED53C7E10131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestBLL", "UnitTestBLL\UnitTestBLL.csproj", "{17565C3F-1C74-45C6-B385-00231CF3679B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestBLL", "UnitTestBLL\UnitTestBLL.csproj", "{17565C3F-1C74-45C6-B385-00231CF3679B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

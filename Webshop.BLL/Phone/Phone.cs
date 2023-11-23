@@ -1,7 +1,4 @@
-﻿using Webshop.DAL;
-using Webshop.DAL.Phone;
-
-namespace Webshop.BLL.Phone
+﻿namespace Webshop.BLL.Phone
 {
     public class Phone
     {

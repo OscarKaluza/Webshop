@@ -9,7 +9,6 @@ namespace Webshop.Controllers
     {
         PhoneModel phoneModel = new PhoneModel();
         PhoneService phoneService = new PhoneService(new PhoneDAL());
-
         public IActionResult Index()
         {
             phoneModel.phones = phoneService.GetPhones();

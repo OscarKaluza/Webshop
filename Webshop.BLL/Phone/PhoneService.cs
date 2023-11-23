@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Webshop.DAL.Phone;
+using Webshop.BLL.Phone;
 
 namespace Webshop.BLL.Phone
 {
     public class PhoneService
     {
-        private List<Phone> phones = new List<Phone>();
-        IphoneDAL Iphone;
+        private List<Phone> Phones = new List<Phone>();
+        Iphone Iphone;
 
-        public PhoneService(IphoneDAL phone) 
+        public PhoneService(Iphone phone) 
         { 
             Iphone = phone;
         }
+
 
         public List<Phone> GetPhones()
         {
@@ -31,10 +32,10 @@ namespace Webshop.BLL.Phone
                     Price = phoneDTO.Price,
                     Description = phoneDTO.Description
                 };
-                phones.Add(phone);
+                Phones.Add(phone);
             }
 
-            return phones;
+            return Phones;
         }
 
         public void AddPhone(Phone phone)

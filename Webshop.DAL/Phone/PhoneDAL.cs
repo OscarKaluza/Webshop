@@ -3,7 +3,7 @@ using Webshop.BLL.Phone;
 
 namespace Webshop.DAL.Phone
 {
-    public class PhoneDAL : IphoneDAL
+    public class PhoneDAL : Iphone
     {
         private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
 
@@ -99,8 +99,6 @@ namespace Webshop.DAL.Phone
 				}
 			}
 		}
-
-
 
 		public void UpdatePhoneInDatabase(PhoneDTO phone)
 		{

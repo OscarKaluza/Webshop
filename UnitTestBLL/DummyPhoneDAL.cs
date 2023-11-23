@@ -2,7 +2,7 @@
 
 namespace Webshop.DAL.Phone
 {
-	public class DummyPhoneDAL : IphoneDAL
+	public class DummyPhoneDAL : Iphone
 	{
 		public List<PhoneDTO> allPhones { get; set; }
 		public PhoneDTO Phone { get; set; }
@@ -10,9 +10,10 @@ namespace Webshop.DAL.Phone
 		public List<PhoneDTO> RetrievePhones()
 		{
 			allPhones = new List<PhoneDTO>();
-			Phone = new PhoneDTO();
-		
-			allPhones.Add(Phone);
+			PhoneDTO phone = new PhoneDTO();
+
+			allPhones.Add(phone);
+
 			return allPhones;
 		}
 

@@ -7,6 +7,8 @@ namespace Webshop.DAL.Phone
     {
         private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
 
+
+
         public List<PhoneDTO> RetrievePhones()
         {
             List<PhoneDTO> phoneDTOs = new List<PhoneDTO>();
@@ -73,60 +75,60 @@ namespace Webshop.DAL.Phone
             }
         }
 
-		public bool DeletePhoneFromDatabase(PhoneDTO phone)
-		{
-			string sqlQuery = "DELETE FROM `phone` WHERE id = @id";
+        public bool DeletePhoneFromDatabase(PhoneDTO phone)
+        {
+            string sqlQuery = "DELETE FROM `phone` WHERE id = @id";
 
-			using (MySqlConnection connection = new MySqlConnection(connectionString))
-			{
-				try
-				{
-					connection.Open();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
 
-					using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
-					{
-						command.Parameters.AddWithValue("@id", phone.ID); 
-						command.ExecuteNonQuery();
-						return true;
-					}
-				}
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", phone.ID);
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
 
-				catch (Exception ex)
-				{
-					return false;
-				}
-			}
-		}
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
 
-		public void UpdatePhoneInDatabase(PhoneDTO phone)
-		{
-			string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
+        public void UpdatePhoneInDatabase(PhoneDTO phone)
+        {
+            string sqlQuery = "UPDATE `phone` SET Brand = @brand, Model = @model, Description = @description, Price = @price WHERE ID = @ID";
 
-			using (MySqlConnection connection = new MySqlConnection(connectionString))
-			{
-				try
-				{
-					connection.Open();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
 
-					using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
-					{
-						command.Parameters.AddWithValue("@ID", phone.ID); 
-						command.Parameters.AddWithValue("@brand", phone.Brand); 
-						command.Parameters.AddWithValue("@model", phone.Model);
-						command.Parameters.AddWithValue("@description", phone.Description);
-						command.Parameters.AddWithValue("@price", phone.Price);
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", phone.ID);
+                        command.Parameters.AddWithValue("@brand", phone.Brand);
+                        command.Parameters.AddWithValue("@model", phone.Model);
+                        command.Parameters.AddWithValue("@description", phone.Description);
+                        command.Parameters.AddWithValue("@price", phone.Price);
 
-						command.ExecuteNonQuery();
-					}
-				}
-				catch (Exception ex)
-				{
-				}
-			}
-		}
-
-
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
 
 
-	}
+
+
+    }
 }

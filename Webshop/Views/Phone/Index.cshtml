@@ -45,15 +45,18 @@
             {
                 <li>
                     <img src="https://scalar.usc.edu/works/a-nostalgic-filter/media/thumbnail.png">
+                    <p style="display: none;">Brand: @Model.phones[i].ID</p>
                     <p>Brand: @Model.phones[i].Brand</p>
                     <p>Model: @Model.phones[i].Model</p>
                     <p> Price: @Model.phones[i].Price </p>
                     <p>Description: @Model.phones[i].Description</p>
 
                     <form asp-controller="Order" asp-action="Order" method="post">
+                        <input type="hidden" name="ID" value="@Model.phones[i].ID" />
                         <input type="hidden" name="Brand" value="@Model.phones[i].Brand" />
                         <input type="hidden" name="Model" value="@Model.phones[i].Model" />
                         <input type="hidden" name="Price" value="@Model.phones[i].Price" />
+
 
 
                         <button type="submit">Bestel</button>

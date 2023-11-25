@@ -1,15 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Webshop.BLL.Phone;
-using static Org.BouncyCastle.Asn1.Cmp.Challenge;
+using Webshop.BLL.Order;
 
 namespace Webshop.DAL.Order
 {
-    public class OrderDAL
+    public class OrderDAL : IOrder
     {
         private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
         public int RegisterOrder(int customerID, int total)
@@ -33,9 +28,8 @@ namespace Webshop.DAL.Order
         }
 
 
-        public void RegisterOrderDetails(int phoneid, int quantity, int price)
+        public void RegisterOrderDetails(int orderid, int phoneid, int quantity, int price)
         {
-            int orderid = RegisterOrder(1, quantity * price);
             string sqlQuery = "INSERT INTO `order_details`(`OrderID`, `PhoneID`, `Quantity`, `Price`) VALUES (@orderid, @phoneid, @quantity, @price)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -52,6 +46,10 @@ namespace Webshop.DAL.Order
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public void UpdateOrder() 
+        { 
         }
 
     }

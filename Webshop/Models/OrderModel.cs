@@ -4,11 +4,10 @@ using Webshop.BLL.Phone;
 
 namespace Webshop.Models
 {
-    public class OrderModel
+    public class OrderModel : Phone
     {
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public string Description { get; set; }
-        public int Price { get; set; }
+        public int CustomerID { get; set; }    
+        public int Quantity { get; set; }
+        public int Total { get; set; }
     }
 }

@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Webshop.BLL.Phone;
 
 namespace Webshop.BLL.Order
 {
-    internal class OrderService : IOrder
+    public class OrderService : IOrder
     {
+        IOrder Repo;
+        public OrderService(IOrder repo)
+        {
+            Repo = repo;
+        }
         public int RegisterOrder(int customerId, int total)
         {
-            return customerId;
+            int orderID = Repo.RegisterOrder(customerId, total);
+            return orderID;
         }
 
         public void RegisterOrderDetails(int orderid, int phoneid, int quantity, int price)
         {
-
-        }
-
-        public void UpdateOrder()
-        {
-
+            Repo.RegisterOrderDetails(orderid, phoneid, quantity, price);
         }
 
     }

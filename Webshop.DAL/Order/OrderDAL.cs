@@ -48,9 +48,5 @@ namespace Webshop.DAL.Order
             }
         }
 
-        public void UpdateOrder() 
-        { 
-        }
-
     }
 }

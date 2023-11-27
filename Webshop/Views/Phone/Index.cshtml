@@ -50,15 +50,15 @@
                     <p>Model: @Model.phones[i].Model</p>
                     <p> Price: @Model.phones[i].Price </p>
                     <p>Description: @Model.phones[i].Description</p>
+                    <p style="display: none;">Quantity: @Model.Quantity</p>
+
 
                     <form asp-controller="Order" asp-action="Order" method="post">
                         <input type="hidden" name="ID" value="@Model.phones[i].ID" />
                         <input type="hidden" name="Brand" value="@Model.phones[i].Brand" />
                         <input type="hidden" name="Model" value="@Model.phones[i].Model" />
                         <input type="hidden" name="Price" value="@Model.phones[i].Price" />
-
-
-
+                        <input type="hidden" name="Quantity" value="@Model.Quantity = 1" />
                         <button type="submit">Bestel</button>
                     </form>
                 </li>

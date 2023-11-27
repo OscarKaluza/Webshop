@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
 using ZstdSharp.Unsafe;
 using Webshop.DAL.Order;
+using Webshop.BLL.Order;
+
 
 namespace Webshop.Controllers
 {
@@ -20,11 +22,13 @@ namespace Webshop.Controllers
         [HttpPost]
         public string Order2(OrderModel orderModel)
         {
-            //DAL TEST
-            orderdal = new OrderDAL();
+            OrderService orderservice = new OrderService(new OrderDAL());
 
-            int orderid = orderdal.RegisterOrder(1, 0);
-            orderdal.RegisterOrderDetails(orderid, orderModel.ID, 1, orderModel.Price);
+            orderModel.Quantity = 1;
+            orderModel.Total = orderModel.Price * orderModel.Quantity;
+
+            int orderid = orderservice.RegisterOrder(1, orderModel.Total);
+            orderservice.RegisterOrderDetails(orderid, orderModel.ID, 1, orderModel.Price);
 
             return new string($"Your phone has been ordered\n" +
                               $"Brand: {orderModel.Brand}\n" +

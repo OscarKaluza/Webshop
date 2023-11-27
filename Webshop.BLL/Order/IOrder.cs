@@ -10,6 +10,5 @@ namespace Webshop.BLL.Order
     {
         public int RegisterOrder(int customerID, int total);
         public void RegisterOrderDetails(int orderid, int phoneid, int quantity, int price);
-        public void UpdateOrder();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Webshop.BLL.Phone;
+﻿using Webshop.BLL.Order;
+using Webshop.BLL.Phone;
 
 namespace Webshop.Models
 {
@@ -10,6 +11,7 @@ namespace Webshop.Models
         public string Model { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
+        public int Quantity { get; set; }
 
     }
 }

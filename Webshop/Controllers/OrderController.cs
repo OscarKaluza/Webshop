@@ -24,9 +24,10 @@ namespace Webshop.Controllers
         {
             OrderService orderservice = new OrderService(new OrderDAL());
 
-            
+            orderModel.Quantity = 1;
+            orderModel.Total = orderModel.Price * orderModel.Quantity;
 
-            orderservice.RegisterOrder(1, orderModel.Total, orderModel.ID, 1, orderModel.Price);
+            orderservice.RegisterOrder(1, orderModel.Total, orderModel.ID, orderModel.Quantity, orderModel.Price);
 
             return new string($"Your phone has been ordered\n" +
                               $"Brand: {orderModel.Brand}\n" +

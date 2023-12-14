@@ -44,20 +44,29 @@
             @for (var i = 0; i < Model.phones.Count; i++)
             {
                 <li>
-                    <img src="https://scalar.usc.edu/works/a-nostalgic-filter/media/thumbnail.png">
-                    <p>Brand: @Model.phones[i].Brand</p>
+                    <img src="https://static.vecteezy.com/system/resources/previews/011/047/522/non_2x/smartphone-and-mobile-phone-free-png.png" width="255" height="255">
+                    <p style="display: none;">Brand: @Model.phones[i].ID</p>
+                    <p>Merk: @Model.phones[i].Brand</p>
                     <p>Model: @Model.phones[i].Model</p>
-                    <p>Price: @Model.phones[i].Price</p>
-                    <p>Description: @Model.phones[i].Description</p>
+                    <p> Prijs: @Model.phones[i].Price </p>
+                    <p>Omschrijving: @Model.phones[i].Description</p>
+                    <p style="display: none;">Quantity: @Model.Quantity</p>
+
 
                     <form asp-controller="Phone" asp-action="Delete" method="post">
                         <input type="hidden" name="ID" value="@Model.phones[i].ID" />
-                        <button type="submit">Telefoon Verwijderen</button>
+                        <input type="hidden" name="Brand" value="@Model.phones[i].Brand" />
+                        <input type="hidden" name="Model" value="@Model.phones[i].Model" />
+                        <input type="hidden" name="Price" value="@Model.phones[i].Price" />
+                        <input type="hidden" name="Description" value="@Model.phones[i].Description" />
+
+                        <input type="hidden" name="Quantity" value="@Model.Quantity = 1" />
+                        <button type="submit">Verwijderen</button>
                     </form>
+
                 </li>
             }
         </ul>
-
     </div>
 </body>
 </html>

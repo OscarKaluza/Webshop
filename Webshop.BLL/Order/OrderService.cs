@@ -14,7 +14,7 @@ namespace Webshop.BLL.Order
         {
             Repository = repo;
         }
-        public int RegisterOrder(int customerId, int total, int phoneid, int quantity, double price)
+        public int RegisterOrder(int customerId, double total, int phoneid, int quantity, double price)
         {
             int orderID = Repository.RegisterOrder(customerId, total, phoneid, quantity, price);
             return orderID;

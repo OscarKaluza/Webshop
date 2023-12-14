@@ -8,6 +8,6 @@ namespace Webshop.Models
     {
         public int CustomerID { get; set; }    
         public int Quantity { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
     }
 }

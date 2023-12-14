@@ -8,6 +8,6 @@ namespace Webshop.BLL.Order
 {
     public interface IOrder
     {
-        public int RegisterOrder(int customerID, int total, int phoneid, int quantity, double price);
+        public int RegisterOrder(int customerID, double total, int phoneid, int quantity, double price);
     }
 }

@@ -91,8 +91,27 @@ namespace UnitTestBLL
             PhoneDTO newModifiedPhone = phoneService.ModifyPhone(phoneToModify);
             phoneDAL.Phone = newModifiedPhone;
 
-
             Assert.Equal(newModifiedPhone, phoneDAL.Phone);
         }
-}
+
+        [Fact]
+        public void check_if_modify_phone_returns_a_modified_phone()
+        {
+            DummyPhoneDAL phoneDAL = new DummyPhoneDAL();
+            PhoneService phoneService = new PhoneService(phoneDAL);
+
+            Phone phoneToModify = new Phone
+            {
+                ID = 2,
+                Brand = "test2",
+                Model = "test2",
+                Description = "test2",
+                Price = 900
+            };
+
+            PhoneDTO newmodifiedphone = phoneService.ModifyPhone(phoneToModify);
+
+            Assert.IsType<PhoneDTO>(newmodifiedphone);
+        }
+    }
 }

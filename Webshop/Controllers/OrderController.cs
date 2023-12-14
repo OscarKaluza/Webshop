@@ -10,7 +10,7 @@ namespace Webshop.Controllers
 {
     public class OrderController : Controller
     {
-        public OrderModel ordermodel { get; set; }
+        private OrderModel ordermodel { get; set; }
         OrderDAL orderdal { get; set; } 
 
 
@@ -27,8 +27,7 @@ namespace Webshop.Controllers
             orderModel.Quantity = 1;
             orderModel.Total = orderModel.Price * orderModel.Quantity;
 
-            int orderid = orderservice.RegisterOrder(1, orderModel.Total);
-            orderservice.RegisterOrderDetails(orderid, orderModel.ID, 1, orderModel.Price);
+            orderservice.RegisterOrder(1, orderModel.Total, orderModel.ID, orderModel.Quantity, orderModel.Price);
 
             return new string($"Your phone has been ordered\n" +
                               $"Brand: {orderModel.Brand}\n" +
@@ -36,7 +35,6 @@ namespace Webshop.Controllers
                               $"Total: {orderModel.Price}");
 
         }
-
 
         [HttpPost]
         public IActionResult Order(OrderModel ordermodel)

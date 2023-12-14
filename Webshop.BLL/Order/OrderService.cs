@@ -9,20 +9,15 @@ namespace Webshop.BLL.Order
 {
     public class OrderService : IOrder
     {
-        IOrder Repo;
+        IOrder Repository;
         public OrderService(IOrder repo)
         {
-            Repo = repo;
+            Repository = repo;
         }
-        public int RegisterOrder(int customerId, int total)
+        public int RegisterOrder(int customerId, int total, int phoneid, int quantity, int price)
         {
-            int orderID = Repo.RegisterOrder(customerId, total);
+            int orderID = Repository.RegisterOrder(customerId, total, phoneid, quantity, price);
             return orderID;
-        }
-
-        public void RegisterOrderDetails(int orderid, int phoneid, int quantity, int price)
-        {
-            Repo.RegisterOrderDetails(orderid, phoneid, quantity, price);
         }
 
     }

@@ -4,8 +4,8 @@ namespace Webshop.DAL.Phone
 {
 	public class DummyPhoneDAL : Iphone
 	{
-		public List<PhoneDTO> allPhones { get; set; }
-		public PhoneDTO Phone { get; set; }
+		private List<PhoneDTO> allPhones { get; set; }
+		private PhoneDTO Phone { get; set; }
 
         public List<PhoneDTO> RetrievePhones()
 		{
@@ -20,7 +20,6 @@ namespace Webshop.DAL.Phone
 			};
 
             allPhones.Add(phone);
-
 
             return allPhones;
 		}

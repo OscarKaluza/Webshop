@@ -49,6 +49,11 @@ namespace Webshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PhoneModel phoneModel)
         {
+            if (phoneModel.Price < 0)
+            {
+                throw new InvalidOperationException("Price cannot be less then 0");
+            }
+
             Phone newPhone = new Phone();
             newPhone.Brand = phoneModel.Brand;
             newPhone.Model = phoneModel.Model;
@@ -87,7 +92,12 @@ namespace Webshop.Controllers
         [HttpPost]
         public ActionResult Modify(PhoneModel phoneModel)
         {
-			Phone modifiedPhone = new Phone
+            if (phoneModel.Price < 0)
+            {
+                throw new InvalidOperationException("Price cannot be less then 0");
+            }
+
+            Phone modifiedPhone = new Phone
 			{
 				ID = phoneModel.ID,
 				Brand = phoneModel.Brand,

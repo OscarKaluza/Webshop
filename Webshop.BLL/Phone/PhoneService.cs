@@ -39,6 +39,11 @@ namespace Webshop.BLL.Phone
 
         public void AddPhone(Phone phone)
         {
+            if (phone.Price < 0)
+            {
+                throw new InvalidOperationException("Price cannot be less then 0");
+            }
+
             PhoneDTO newPhone = new PhoneDTO
             {
                 Brand = phone.Brand,
@@ -71,7 +76,12 @@ namespace Webshop.BLL.Phone
 
         public PhoneDTO ModifyPhone(Phone phone)
         {
-			PhoneDTO modifiedPhone = new PhoneDTO
+            if (phone.Price < 0)
+            {
+                throw new InvalidOperationException("Price cannot be less then 0");
+            }
+
+            PhoneDTO modifiedPhone = new PhoneDTO
 			{
 				ID = phone.ID,
 				Brand = phone.Brand,

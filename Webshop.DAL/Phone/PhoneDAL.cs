@@ -25,7 +25,7 @@ namespace Webshop.DAL.Phone
                             int id = (int)reader["ID"];
                             string brand = reader["Brand"].ToString();
                             string model = reader["Model"].ToString();
-                            int price = (int)reader["Price"];
+                            double price = (double)reader["Price"];
                             string description = reader["Description"].ToString();
 
                             PhoneDTO phoneDTO = new PhoneDTO

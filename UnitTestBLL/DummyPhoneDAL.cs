@@ -4,12 +4,12 @@ namespace Webshop.DAL.Phone
 {
 	public class DummyPhoneDAL : Iphone
 	{
-		private List<PhoneDTO> allPhones { get; set; }
-		private PhoneDTO Phone { get; set; }
+		public List<PhoneDTO> AllPhones { get; private set; }
+		public PhoneDTO Phone { get; set; }
 
         public List<PhoneDTO> RetrievePhones()
 		{
-			allPhones = new List<PhoneDTO>();
+			AllPhones = new List<PhoneDTO>();
 			PhoneDTO phone = new PhoneDTO
 			{
 				ID = 1,
@@ -19,9 +19,9 @@ namespace Webshop.DAL.Phone
 				Price = 800
 			};
 
-            allPhones.Add(phone);
+            AllPhones.Add(phone);
 
-            return allPhones;
+            return AllPhones;
 		}
 
 		public void AddPhoneInDatabase(PhoneDTO phonedto)
@@ -36,7 +36,7 @@ namespace Webshop.DAL.Phone
 
 		public bool DeletePhoneFromDatabase(PhoneDTO phone)
 		{
-			allPhones = new List<PhoneDTO>
+			AllPhones = new List<PhoneDTO>
 			{
 				new PhoneDTO
 				{
@@ -48,11 +48,11 @@ namespace Webshop.DAL.Phone
 				}
 			};
 
-			var phoneToDelete = allPhones.FirstOrDefault(p => p.ID == phone.ID);
+			var phoneToDelete = AllPhones.FirstOrDefault(p => p.ID == phone.ID);
 
 			if (phoneToDelete != null)
 			{
-				allPhones.Remove(phoneToDelete);
+				AllPhones.Remove(phoneToDelete);
 				return true;
 			}
 

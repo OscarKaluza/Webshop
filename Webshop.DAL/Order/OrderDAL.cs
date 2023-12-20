@@ -6,7 +6,7 @@ namespace Webshop.DAL.Order
 {
     public class OrderDAL : IOrder
     {
-        private string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
+        private const string connectionString = "Server=studmysql01.fhict.local; Port=3306;Database=dbi515670;User=dbi515670;Password=Tua1X#TbOS;";
         public int RegisterOrder(int customerID, double total, int phoneid, int quantity, double price)
         {
             string sqlQuery = "INSERT INTO `orders`(`CustomerID`, `Total`, PhoneID, Quantity, Price) VALUES (@customerID, @total, @phoneid, @quantity, @price); SELECT LAST_INSERT_ID();";

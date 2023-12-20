@@ -23,11 +23,11 @@ namespace UnitTestBLL
             Assert.NotNull(phoneservice.GetPhones());
             Assert.IsType<List<Phone>>(phoneservice.GetPhones());
 
-            Assert.Equal(exepectedPhone.ID, phoneDAL.allPhones[0].ID);
-            Assert.Equal(exepectedPhone.Brand, phoneDAL.allPhones[0].Brand);
-            Assert.Equal(exepectedPhone.Model, phoneDAL.allPhones[0].Model);
-            Assert.Equal(exepectedPhone.Description, phoneDAL.allPhones[0].Description);
-            Assert.Equal(exepectedPhone.Price, phoneDAL.allPhones[0].Price);
+            Assert.Equal(exepectedPhone.ID, phoneDAL.AllPhones[0].ID);
+            Assert.Equal(exepectedPhone.Brand, phoneDAL.AllPhones[0].Brand);
+            Assert.Equal(exepectedPhone.Model, phoneDAL.AllPhones[0].Model);
+            Assert.Equal(exepectedPhone.Description, phoneDAL.AllPhones[0].Description);
+            Assert.Equal(exepectedPhone.Price, phoneDAL.AllPhones[0].Price);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace UnitTestBLL
                 Description = "test",
                 Price = 800
             });
-            Assert.Empty(phoneDAL.allPhones);
+            Assert.Empty(phoneDAL.AllPhones);
         }
 
 
